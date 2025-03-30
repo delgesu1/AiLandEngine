@@ -1,0 +1,283 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-blue: #3366ff;
+  --dark-navy: #1a2233;
+  --light-gray: #f5f7fa;
+  --medium-gray: #e0e0e0;
+  --dark-gray: #667085;
+  --success-green: #027a48;
+  --warning-orange: #b54708;
+  --error-red: #b42318;
+  --success-bg: #ecfdf3;
+  --warning-bg: #fff8eb;
+  --error-bg: #fef3f2;
+  --info-bg: #f0f4ff;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+ 
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+ 
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+ 
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+ 
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+ 
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+ 
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+ 
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+ 
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+ 
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+ 
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+ 
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+ 
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+ 
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors 
+    focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none 
+    disabled:opacity-50 h-9 px-4 py-2;
+  }
+  
+  .btn-primary {
+    @apply bg-[#3366ff] text-white hover:bg-[#2952cc];
+  }
+  
+  .btn-outline {
+    @apply border border-input bg-transparent hover:bg-secondary hover:text-secondary-foreground;
+  }
+  
+  .card {
+    @apply rounded-lg border bg-card p-4 shadow;
+  }
+  
+  .form-input {
+    @apply h-9 px-3 py-2 border border-[#d0d5dd] rounded-md text-sm focus:border-[#3366ff] focus:ring focus:ring-[rgba(51,102,255,0.2)] focus:ring-opacity-50 outline-none;
+  }
+  
+  .form-select {
+    @apply flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm 
+    shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 
+    focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  
+  .form-checkbox {
+    @apply h-4 w-4 rounded border-gray-300 text-[#3366ff] focus:ring-[#3366ff];
+  }
+  
+  /* Status styles */
+  .status-match {
+    @apply text-[#027a48];
+  }
+  
+  .status-review {
+    @apply text-[#b54708];
+  }
+  
+  .status-disqualified {
+    @apply text-[#b42318];
+  }
+  
+  /* Buy Box criteria styles */
+  .criteria-compatible {
+    @apply bg-[#ecfdf3] text-[#027a48];
+  }
+  
+  .criteria-incompatible {
+    @apply bg-[#fef3f2] text-[#b42318];
+  }
+  
+  .criteria-neutral {
+    @apply bg-gray-100 text-gray-500;
+  }
+
+  /* Tab styles */
+  .tab-active {
+    @apply text-[#3366ff] border-b-2 border-[#3366ff];
+  }
+  
+  .tab-inactive {
+    @apply text-gray-500 hover:text-gray-700;
+  }
+
+  /* Filter badge styles */
+  .filter-badge {
+    @apply px-3 py-1 text-xs font-medium rounded-full;
+  }
+  
+  .filter-badge-active {
+    @apply bg-[#3366ff] text-white;
+  }
+  
+  .filter-badge-inactive {
+    @apply bg-gray-100 text-gray-700 hover:bg-gray-200;
+  }
+
+  /* Assemblage badge styles */
+  .assemblage-badge {
+    @apply bg-[#f0f4ff] text-[#3366ff] px-2 py-1 text-xs font-medium rounded-full;
+  }
+
+  /* Utility status styles */
+  .utility-available {
+    @apply text-[#027a48];
+  }
+  
+  .utility-unavailable {
+    @apply text-[#b42318];
+  }
+
+  /* Parcel detail card styles */
+  .parcel-detail-card {
+    @apply rounded-lg border bg-white shadow-md overflow-hidden;
+  }
+  
+  .parcel-detail-header {
+    @apply flex justify-between items-center px-4 py-3 bg-[#f9fafc] border-b border-gray-200;
+  }
+  
+  .parcel-detail-body {
+    @apply p-4 space-y-4;
+  }
+  
+  .parcel-detail-section {
+    @apply pt-3 border-t border-gray-200;
+  }
+  
+  .parcel-detail-row {
+    @apply flex justify-between text-sm;
+  }
+  
+  .parcel-detail-label {
+    @apply text-gray-500;
+  }
+  
+  .parcel-detail-value {
+    @apply font-medium;
+  }
+}
+
+/* Leaflet specific styles */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.leaflet-control-attribution {
+  font-size: 10px;
+}
+
+.leaflet-tooltip {
+  padding: 6px 10px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.parcel-tooltip {
+  min-width: 200px;
+}
+
+.leaflet-control-zoom {
+  border: none !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.leaflet-control-zoom a {
+  background-color: white !important;
+  color: #333 !important;
+}
+
+.leaflet-control-layers {
+  border: none !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  border-radius: 4px !important;
+}
+
+.leaflet-control-layers-toggle {
+  width: 36px !important;
+  height: 36px !important;
+}
+
+.leaflet-control-layers-expanded {
+  padding: 8px 10px !important;
+  background-color: white !important;
+  border-radius: 8px !important;
+  min-width: 200px !important;
+}
+
+.leaflet-control-layers-selector {
+  margin-right: 6px !important;
+}
+
+.leaflet-control-layers-selector + span {
+  font-size: 13px !important;
+}
+
+/* Remove Mapbox specific styles since we're not using it anymore */
+.mapboxgl-ctrl-attrib-inner,
+.mapboxgl-ctrl-logo,
+.mapboxgl-canvas-container,
+.mapboxgl-canvas {
+  display: none;
+}
