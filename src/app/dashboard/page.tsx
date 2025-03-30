@@ -44,6 +44,63 @@ export default function Dashboard() {
           ))}
         </div>
 
+        {/* Market Intelligence */}
+        <div className="card p-0 overflow-hidden">
+          <div className="bg-gradient-to-r from-[#f0f4ff] to-[#e0e7ff] p-5">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="font-semibold">Market Intelligence</h2>
+              <Link 
+                href="/parcel-finder"
+                className="px-4 py-2 bg-[#3366ff] text-white rounded-lg text-sm font-medium"
+                onClick={(e) => {
+                  // This will both navigate to the parcel finder and open the dashboard modal
+                  localStorage.setItem('openMarketDashboard', 'true');
+                }}
+              >
+                View Full Dashboard
+              </Link>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-white p-4 rounded-lg shadow-sm">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 bg-[#ecfdf3] rounded-full flex items-center justify-center text-[#027a48]">
+                    ↗
+                  </div>
+                  <div className="font-medium">Home Sales</div>
+                </div>
+                <div className="text-2xl font-semibold">728</div>
+                <div className="text-sm text-gray-500">Last 12 months</div>
+                <div className="text-xs text-green-600 mt-1">+5.2% year over year</div>
+              </div>
+              
+              <div className="bg-white p-4 rounded-lg shadow-sm">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 bg-[#f0f4ff] rounded-full flex items-center justify-center text-[#3366ff]">
+                    $
+                  </div>
+                  <div className="font-medium">Median Price</div>
+                </div>
+                <div className="text-2xl font-semibold">$485K</div>
+                <div className="text-sm text-gray-500">Single-family homes</div>
+                <div className="text-xs text-green-600 mt-1">+3.8% year over year</div>
+              </div>
+              
+              <div className="bg-white p-4 rounded-lg shadow-sm">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 bg-[#fff8eb] rounded-full flex items-center justify-center text-[#b54708]">
+                    🏗
+                  </div>
+                  <div className="font-medium">Construction</div>
+                </div>
+                <div className="text-2xl font-semibold">1,245</div>
+                <div className="text-sm text-gray-500">New units permitted</div>
+                <div className="text-xs text-amber-600 mt-1">High development activity</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Map and Recent Properties */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Map */}

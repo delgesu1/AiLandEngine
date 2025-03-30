@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import ParcelMap from '@/components/map/ParcelMap';
 import MarketIntelligencePanel from '@/components/map/MarketIntelligencePanel';
 import { ParcelData, ParcelMatchStatus } from '@/types/parcel';
 import { MOCK_PARCELS } from '@/data/mockParcels';
+import Link from 'next/link';
+import { AVAILABLE_LAYERS, LayerType } from '@/data/mapLayers';
 
 const STATUS_LABELS: Record<ParcelMatchStatus, { label: string, color: string }> = {
   'match': { label: 'Match', color: 'bg-[#ecfdf3] text-[#027a48]' },
@@ -20,6 +22,18 @@ export default function ParcelFinder() {
   const [activeBuyBoxFilter, setActiveBuyBoxFilter] = useState<string | null>(null);
   const [showAssemblageModal, setShowAssemblageModal] = useState(false);
   const [showMarketDashboard, setShowMarketDashboard] = useState(false);
+  const [activeLayers, setActiveLayers] = useState<LayerType[]>(
+    AVAILABLE_LAYERS.filter(layer => layer.isActive).map(layer => layer.id)
+  );
+
+  // Check if we should open the market dashboard on load (when coming from the main dashboard)
+  useEffect(() => {
+    const shouldOpenDashboard = localStorage.getItem('openMarketDashboard');
+    if (shouldOpenDashboard === 'true') {
+      setShowMarketDashboard(true);
+      localStorage.removeItem('openMarketDashboard');
+    }
+  }, []);
 
   const handleParcelSelect = (parcel: ParcelData | null) => {
     setSelectedParcel(parcel);
