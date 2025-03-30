@@ -101,10 +101,14 @@ const getZoningColor = (zoningType?: string): string => {
 interface ParcelMapProps {
   onParcelSelect?: (parcel: ParcelData | null) => void;
   filteredParcels?: string[];
-  activeLayers: LayerType[];
+  activeLayers?: LayerType[];
 }
 
-export default function ParcelMap({ onParcelSelect, filteredParcels = [], activeLayers }: ParcelMapProps) {
+export default function ParcelMap({ 
+  onParcelSelect, 
+  filteredParcels = [], 
+  activeLayers = ['parcels', 'zoning', 'utilities'] as LayerType[] 
+}: ParcelMapProps) {
   const [selectedParcel, setSelectedParcel] = useState<ParcelData | null>(null);
   const [mapReady, setMapReady] = useState(false);
   const [showLegend, setShowLegend] = useState(true);

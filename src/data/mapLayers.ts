@@ -1,4 +1,4 @@
-export type LayerType = 'zoning' | 'floodplain' | 'utilities' | 'schools' | 'topography';
+export type LayerType = 'parcels' | 'zoning' | 'floodplain' | 'utilities' | 'schools' | 'topography';
 
 export interface MapLayerItem {
   id: string;
@@ -16,6 +16,11 @@ export interface MapLayer {
 }
 
 export const MAP_LAYERS: Record<LayerType, MapLayerItem[]> = {
+  parcels: [
+    { id: 'match', color: '#12b76a', label: 'Match' },
+    { id: 'review', color: '#f79009', label: 'Review' },
+    { id: 'disqualified', color: '#f04438', label: 'Disqualified' }
+  ],
   zoning: [
     { id: 'residential-single', color: '#8ecae6', label: 'Single Family Residential' },
     { id: 'residential-multi', color: '#219ebc', label: 'Multi-Family Residential' },
@@ -51,6 +56,13 @@ export const MAP_LAYERS: Record<LayerType, MapLayerItem[]> = {
 };
 
 export const AVAILABLE_LAYERS: MapLayer[] = [
+  { 
+    id: 'parcels', 
+    name: 'Parcels',
+    description: 'Property boundaries and ownership',
+    items: MAP_LAYERS.parcels,
+    isActive: true
+  },
   { 
     id: 'zoning', 
     name: 'Zoning',
